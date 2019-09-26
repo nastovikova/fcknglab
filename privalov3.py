@@ -18,9 +18,14 @@ def grass():
 
 
 def fence(x1, y1, x2, y2, n):  # n is the number of pickets in the fence
-    for i in range(n):
-        brushColor(218, 165, 32)
-        rectangle(x1 + (x2-x1)*i//n, y1, x1 + (x2-x1)*(i+1)//n, y2)
+    a = (x2-x1)//n # сторона квадрата
+    k = (y2-y1)//n # кол-во горизонтальных полос
+    for j in range(n): 
+        for i in range(k):
+            brushColor(218, 165, 32)
+            rectangle(x1 + i*a, y1 + j*a, x1 + (i+1)*a, y1 + (j+1)*a)
+
+
 
 
 def house():
@@ -88,21 +93,24 @@ def body(x, y, n, a):
     changeCoords(circle(0, 0, 14), [(x, y), (x + a*n*90, y + n*50)])
 
 
-def head(x, y, n, a):
+def head(x, y, n, a): # а параметр ориентации тут тоже
     penSize(1)
     rectangle(x + a*n*8, y, x + a*n*58, y + n*50)
     changeCoords(circle(0, 0, 14), [(x, y), (x + a*n*12, y + n*16)])
     changeCoords(circle(0, 0, 14), [(x + a*n*54, y), (x + a*n*66, y + n*16)])
     brushColor("white")
-    changeCoords(circle(0, 0, 14), [(x + a*n*16, y + n*19), (x + a*n*28, y + n*23)])
-    changeCoords(circle(0, 0, 14), [(x + a*n*38, y + n*19), (x + a*n*50, y + n*23)])
-    polygon([(x + a*n*18, y + n*41), (x + a*n*21, y + n*33), (x + a*n*24, y + n*37)])
-    polygon([(x + a*n*42, y + n*37), (x + a*n*45, y + n*33), (x + a*n*48, y + n*41)])
-    polyline([(x + a*n*16, y + n*42), (x + a*n*24, y + n*37), (x + a*n*33, y + n*36), (x + a*n*42, y + n*37), (x + a*n*50, y + n*42)])
+   # changeCoords(circle(0, 0, 14), [(x + a*n*16, y + n*19), (x + a*n*28, y + n*23)])
+   # changeCoords(circle(0, 0, 14), [(x + a*n*38, y + n*19), (x + a*n*50, y + n*23)])
+    circle(x + a*n*22, y + n*21, n*6) 
+    circle(x + a*n*44, y + n*21, n*6)
+   #безклыков polygon([(x + a*n*18, y + n*41), (x + a*n*21, y + n*33), (x + a*n*24, y + n*37)])
+   #безклыков polygon([(x + a*n*42, y + n*37), (x + a*n*45, y + n*33), (x + a*n*48, y + n*41)])
+    polyline([(x + a*n*16, y + n*35), (x + a*n*24, y + n*41), (x + a*n*33, y + n*43), (x + a*n*42, y + n*41), (x + a*n*50, y + n*35)])
     brushColor("black")
-    changeCoords(circle(0, 0, 14), [(x + a*n*20, y + n*19), (x + a*n*23, y + n*23)])
-    changeCoords(circle(0, 0, 14), [(x + a*n*42, y + n*19), (x + a*n*46, y + n*23)])
-
+   # changeCoords(circle(0, 0, 14), [(x + a*n*20, y + n*19), (x + a*n*23, y + n*23)]) овальные зрачки
+   # changeCoords(circle(0, 0, 14), [(x + a*n*42, y + n*19), (x + a*n*46, y + n*23)]) овальные зрачки
+    circle(x + a*n*22, y + n*21, n*2)
+    circle(x + a*n*44, y + n*21, n*2)
 
 # main part of the doc
 sky()
